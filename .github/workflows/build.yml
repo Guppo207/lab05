@@ -31,9 +31,11 @@ jobs:
           cmake \
           make
         
-    - name: Create build directory
-      run: mkdir -p _build && cd _build && cmake -E chdir .
-      
+    - name: Create and prepare build directory
+      run: |
+        mkdir -p _build
+        cd _build
+        
     - name: Configure CMake
       working-directory: _build
       run: |
