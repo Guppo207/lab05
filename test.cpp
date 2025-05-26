@@ -11,18 +11,18 @@ class MockAccount : public Account {
 public:
     MockAccount(int id, int balance) : Account(id, balance) {}
     
-    MOCK_METHOD(void, Lock, (), (override));
-    MOCK_METHOD(void, Unlock, (), (override));
-    MOCK_METHOD(int, id, (), (const, override));
-    MOCK_METHOD(void, ChangeBalance, (int diff), (override));
-    MOCK_METHOD(int, GetBalance, (), (override));
+    MOCK_METHOD(void, Lock, ());
+    MOCK_METHOD(void, Unlock, ());
+    MOCK_METHOD(int, id, (), (const));
+    MOCK_METHOD(void, ChangeBalance, (int diff));
+    MOCK_METHOD(int, GetBalance, ());
 };
 
 class MockTransaction : public Transaction {
 public:
-    MOCK_METHOD(bool, Make, (Account& from, Account& to, int sum), (override));
-    MOCK_METHOD(void, set_fee, (int fee), (override));
-    MOCK_METHOD(int, fee, (), (override));
+    MOCK_METHOD(bool, Make, (Account& from, Account& to, int sum));
+    MOCK_METHOD(void, set_fee, (int fee));
+    MOCK_METHOD(int, fee, ());
 };
 
 namespace AccountTests {
